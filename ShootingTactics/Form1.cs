@@ -16,12 +16,50 @@ namespace ShootingTactics
         {
             InitializeComponent();
 
-            buttons = new CheckBox[rows, columns];
-            int width = 40;
-            int height = 40;
+            int size = CreateButtons();
+            AddLabels(size);
+        }
 
-            int x0 = (panelMain.Width - columns * width) / 2;
-            int y = (panelMain.Height - rows * height) / 2;
+        private void AddLabels(int size)
+        {
+            int y = panelMain.Top;
+            for (int r = 0; r < rows; ++r)
+            {
+                Label label = new Label {
+                    Top = y,
+                    Left = panelMain.Left - size,
+                    Width = size,
+                    Height = size,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Text = (r + 1).ToString()
+                };
+                Controls.Add(label);
+                y += size;
+            }
+            int x = panelMain.Left;
+            for (int c = 0; c < columns; ++c)
+            {
+                Label label = new Label
+                {
+                    Top = panelMain.Top - size,
+                    Left = x,
+                    Width = size,
+                    Height = size,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Text = ((char)(c + 'A')).ToString()
+                };
+                Controls.Add(label);
+                x += size;
+            }
+        }
+
+        private int CreateButtons()
+        {
+            buttons = new CheckBox[rows, columns];
+            int buttonSize = Math.Min(panelMain.Width / columns, panelMain.Height / rows);
+
+            int x0 = (panelMain.Width - columns * buttonSize) / 2;
+            int y = (panelMain.Height - rows * buttonSize) / 2;
             for (int r = 0; r < rows; ++r)
             {
                 int x = x0;
@@ -31,17 +69,18 @@ namespace ShootingTactics
                     {
                         Top = y,
                         Left = x,
-                        Width = width,
-                        Height = height,
+                        Width = buttonSize,
+                        Height = buttonSize,
                         Appearance = Appearance.Button
                     };
                     button.CheckStateChanged += Button_CheckStateChanged;
                     buttons[r, c] = button;
                     panelMain.Controls.Add(button);
-                    x += width;
+                    x += buttonSize;
                 }
-                y += height;
+                y += buttonSize;
             }
+            return buttonSize;
         }
 
         Square FindHitSquare(CheckBox button)

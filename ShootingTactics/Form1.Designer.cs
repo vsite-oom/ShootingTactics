@@ -34,14 +34,14 @@
             // 
             // panelMain
             // 
-            this.panelMain.Location = new System.Drawing.Point(12, 12);
+            this.panelMain.Location = new System.Drawing.Point(43, 42);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(420, 420);
             this.panelMain.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(356, 447);
+            this.button1.Location = new System.Drawing.Point(388, 487);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -53,12 +53,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 482);
+            this.ClientSize = new System.Drawing.Size(475, 522);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Shooting Tactics";
             this.ResumeLayout(false);
 
         }
